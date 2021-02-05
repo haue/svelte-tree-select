@@ -2,6 +2,7 @@ import svelte from 'rollup-plugin-svelte';
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs'
 import { terser } from 'rollup-plugin-terser'
+import sveltePreprocess from 'svelte-preprocess';
 
 const pkg = require('./package.json');
 
@@ -17,7 +18,12 @@ export default {
 				dev: false,
 				css: true
 			},
-			emitCss: false
+			emitCss: false,
+			preprocess: sveltePreprocess({
+				postcss: {
+					plugins: [require('tailwindcss'), require('autoprefixer')],
+				},
+			}),
 		}),
 		resolve({
 			browser: true,

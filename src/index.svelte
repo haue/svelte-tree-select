@@ -47,7 +47,7 @@
       }
       return
     }
-    const itemText = e.target.closest('.z-item-text')
+    const itemText = e.target.closest('.item-text')
     if (itemText) {
       dpShow = !dpShow
       const value = itemText.dataset.value

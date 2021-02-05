@@ -1,5 +1,4 @@
 <script>
-  export let name
   import TreeSelect from './index.svelte'
 
   const data = [
@@ -19,13 +18,7 @@
   }
 </script>
 
-<main>
-  <div style="width:400px;height:600px;padding:1em;">
-    <TreeSelect {data} on:change={handleChange} />
-  </div>
-</main>
-
-<style>
+<style global>
   main {
     text-align: center;
     padding: 1em;
@@ -45,4 +38,15 @@
       max-width: none;
     }
   }
+  @import 'tailwindcss/base';
+
+  @import 'tailwindcss/components';
+
+  @import 'tailwindcss/utilities';
 </style>
+
+<main>
+  <div class="w-1/5 p-4 m-auto">
+    <TreeSelect {data} on:change={handleChange} />
+  </div>
+</main>

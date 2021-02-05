@@ -3,18 +3,31 @@
 </script>
 
 <style>
+  svg {
+    display: inline-block;
+  }
   .item-collopse svg {
     transform: rotate(-90deg);
   }
-  .z-item-text {
+  .item-text {
     cursor: pointer;
   }
   .item-collopse .children-container {
     display: none;
   }
+  .line {
+    display: flex;
+    align-items: center;
+  }
+  .line > .item-text {
+    flex-grow: 1;
+  }
+  .line > .item-text:hover {
+    background-color: #e5e7eb;
+  }
 </style>
 
-<div style="display:none">
+<div class="hidden">
   <svg>
     <symbol id="dp-arrow" viewbox="0 0 1024 1024">
       <path
@@ -25,18 +38,18 @@
 </div>
 {#each data as item}
   <div class="item item-collopse">
-    <div>
+    <div class="line">
       {#if item.children && item.children.length > 0}
-        <svg width=".8em" height=".8em" style="cursor:pointer">
+        <svg class="w-3 h-3 cursor-pointer">
           <use xlink:href="#dp-arrow" />
         </svg>
       {:else}
-        <svg width=".8em" height=".8em" />
+        <div class="w-3 h-3 inline-block" />
       {/if}
-      <span class="z-item-text" data-value={item.value}>{item.text}</span>
+      <span class="item-text" data-value={item.value}>{item.text}</span>
     </div>
     {#if item.children && item.children.length > 0}
-      <div style="padding-left: 1em;" class="children-container">
+      <div class="pl-4 children-container">
         <svelte:self {...{ data: item.children }} />
       </div>
     {/if}
