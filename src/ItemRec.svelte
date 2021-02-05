@@ -27,7 +27,7 @@
   }
 </style>
 
-<div class="hidden">
+<div style="display:none">
   <svg>
     <symbol id="dp-arrow" viewbox="0 0 1024 1024">
       <path
