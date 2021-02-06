@@ -58,15 +58,24 @@
       })
     }
   }
+
+  function handleBlur() {
+    dpShow = false
+  }
 </script>
 
 <style>
-  .z-st {
+  .st {
     width: 100%;
     text-align: left;
     position: relative;
+    box-sizing: border-box;
   }
-  .z-st-select {
+  .st:focus {
+    outline: none !important;
+    box-shadow: 0 0 4px #40a9ff;
+  }
+  .select {
     width: 100%;
     height: 2em;
     border-radius: 2px;
@@ -75,18 +84,21 @@
     padding: 0.2em 0.5em;
     box-sizing: border-box;
   }
-  .z-st-select-input {
+  .select:hover {
+    border: 1px solid #40a9ff;
+  }
+  .select-input {
     flex-grow: 1;
   }
-  .z-st-select-input-dp {
+  .select-input-dp {
     width: 1em;
     color: #d9d9d9;
-    transform: translateY(0.2em);
+    transform: translateY(0.3em);
   }
-  .z-dp {
+  .dp {
     width: 100%;
-    border-radius: 2px;
-    border: 1px solid #d9d9d9;
+    box-shadow: 0 3px 6px -4px rgb(0 0 0 / 12%), 0 6px 16px 0 rgb(0 0 0 / 8%),
+      0 9px 28px 8px rgb(0 0 0 / 5%);
     padding: 0.2em 0.5em;
     box-sizing: border-box;
     position: absolute;
@@ -104,10 +116,10 @@
   }
 </style>
 
-<div class="z-st">
-  <div class="z-st-select" on:click={handleInputClick}>
-    <div class="z-st-select-input {_value ? '' : 'noselect'}">{_text}</div>
-    <div class="z-st-select-input-dp">
+<div class="st" tabindex="0" on:blur={handleBlur}>
+  <div class="select" on:click={handleInputClick}>
+    <div class="select-input {_value ? '' : 'noselect'}">{_text}</div>
+    <div class="select-input-dp">
       <svg
         viewBox="64 64 896 896"
         focusable="false"
@@ -124,7 +136,7 @@
     </div>
   </div>
   <div
-    class="z-dp {dpShow ? '' : 'hide'}"
+    class="dp {dpShow ? '' : 'hide'}"
     on:click={handleDpClick}
     unselectable="on"
     onselectstart="return false;">
