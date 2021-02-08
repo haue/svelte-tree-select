@@ -18,6 +18,12 @@
   }
 </script>
 
+<main>
+  <div class="w-1/5 p-4 m-auto">
+    <TreeSelect {data} on:change={handleChange} />
+  </div>
+</main>
+
 <style global>
   main {
     text-align: center;
@@ -44,9 +50,3 @@
 
   @import 'tailwindcss/utilities';
 </style>
-
-<main>
-  <div class="w-1/5 p-4 m-auto">
-    <TreeSelect {data} on:change={handleChange} />
-  </div>
-</main>
