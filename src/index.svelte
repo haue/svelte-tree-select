@@ -123,14 +123,14 @@
 </div>
 
 <div class="sts" tabindex="0" on:blur={handleBlur}>
-  <div class="z-sts-select" on:click={handleInputClick}>
+  <div
+    class="z-sts-select"
+    on:mouseenter={handleArrowMouseEnter}
+    on:mouseleave={handleArrowMouseLeave}
+    on:click={handleInputClick}
+  >
     <div class="z-sts-select-input {_value ? '' : 'noselect'}">{_text}</div>
-    <div
-      class="z-sts-select-input-dp"
-      on:mouseenter={handleArrowMouseEnter}
-      on:mouseleave={handleArrowMouseLeave}
-      on:click={handlerInputArrowClick}
-    >
+    <div class="z-sts-select-input-dp" on:click={handlerInputArrowClick}>
       <svg viewBox="64 64 896 896" focusable="false" fill="currentColor">
         <use xlink:href="#z-arrow" />
       </svg>
